@@ -17,8 +17,8 @@ parser.add_argument('-c',  '--convert',  action='store_true')
 args = parser.parse_args()
 
 # PARAMETER SETTERS
-subject = "convert" if args.convert else "null"
-body = "convert"
+subject = "convert" if args.convert else "null" # converts to kindle reader format if specified in subject
+body = "convert" # body is required
 sender_email = args.gmail
 receiver_email = args.kindle
 
@@ -27,7 +27,7 @@ message = MIMEMultipart()
 message["From"] = sender_email
 message["To"] = receiver_email
 message["Subject"] = subject
-message["Bcc"] = receiver_email  # Recommended for mass emails
+message["Bcc"] = receiver_email
 
 # Add body to email
 message.attach(MIMEText(body, "plain"))
